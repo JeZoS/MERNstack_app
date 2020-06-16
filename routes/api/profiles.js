@@ -3,6 +3,7 @@ const router = express.Router();
 const auth = require('../../middleware/auth');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const Post = require('../../models/Post')
 const {check,validationResult} = require('express-validator');
 
 router.get('/me',auth,
@@ -19,6 +20,7 @@ router.get('/me',auth,
             res.status(500).send('server error');
         }
     });
+
 
 router.post('/',[auth,[
     check('status','status required').not().isEmpty(),
@@ -99,6 +101,8 @@ router.get('/user/:user_id', async (req,res)=> {
 });
 router.delete('/',auth,async (req,res)=>{
     try {
+
+        await Post.deleteMany({user:req.user.id});
         await Profile.deleteOne({ user: req.user.id});
         await User.deleteOne({ _id: req.user.id});
         res.json({message:'user deleted'});
@@ -107,6 +111,8 @@ router.delete('/',auth,async (req,res)=>{
         res.status(500).send('Server error');
     }
 });
+
+
 router.put('/experience',[auth,[
     check('title','title is required').not().isEmpty(),
     check('company','company is required').not().isEmpty(),
