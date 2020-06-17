@@ -2,7 +2,7 @@ import React, { Fragment ,useState } from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {addEducation} from '../../action/profile'
-import {Link,Redirect} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 
 const AddEducation = ({addEducation,history}) => {
