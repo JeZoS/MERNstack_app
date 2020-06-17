@@ -54,7 +54,6 @@ const EditProfile = ({profile:{profile ,loading},createProfile,getCurrentProfile
         youtube,
         instagram
     } = formData;
-     
 
     const onChange = e => setFormData({...formData,[e.target.name]:e.target.value})
     
@@ -69,8 +68,8 @@ const EditProfile = ({profile:{profile ,loading},createProfile,getCurrentProfile
         Create Your Profile
       </h1>
       <p className="lead">
-        <i className="fas fa-user"></i> Let's get some information to make your
-        profile stand out
+        <i className="fas fa-user"></i> 
+        Let's get some information to make your profile stand out
       </p>
       <small>* = required field</small>
       <form className="form" onSubmit={e => onSubmit(e)}>
